@@ -51,13 +51,23 @@
                             <p class="mt-1 text-sm text-red-600">{{ form.password.errors }}</p>
                         {% endif %}
                     </div>
+                    
+                    <div class='flex items-center justify-between'>
 
-                    <!-- Remember Me -->
-                    <div class="flex items-center">
-                        {% render_field form.remember class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %}
-                        <label for="{{ form.remember.id_for_label }}" class="ml-2 block text-sm text-gray-700">
-                            {% trans "Remember Me" %}
-                        </label>
+                        <!-- Remember Me -->
+                        <div class="flex items-center">
+                            {% render_field form.remember class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %}
+                            <label for="{{ form.remember.id_for_label }}" class="ml-2 block text-sm text-gray-700">
+                                {% trans "Remember Me" %}
+                            </label>
+                        </div>
+    
+                        <!--Forget password -->
+                        <div>
+                            <a class='text-sm text-blue-700 hover:text-blue-500' href="{% url 'account_reset_password'%}">
+                                {% trans "forget password?" %}
+                            </a>
+                        </div>
                     </div>
                 </div>
 
