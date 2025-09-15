@@ -1,0 +1,20 @@
+
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<div class='bg-gray-200 rounded-lg mt-4 p-6'>
+    <h1 class='text-3xl font-semibold text-center'>{{flower.title}}</h1>
+    <p class='font-normal text-wrap mt-2'>{{flower.description}}</p>
+
+</div>
+<div class='flex justify-center mt-2'>
+
+    <a href="{% url 'index'%}" class='mx-auto underline hover:text-blue-400'>Back</a>
+</div>
+
+
+
+{% endblock content %}
+
+
