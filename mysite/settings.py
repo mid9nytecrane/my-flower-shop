@@ -127,7 +127,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = False #set a boolean value for Postgres local databas use
+POSTGRES_LOCALLY = True #set a boolean value for Postgres local databas use
 
 # condition to switch between default sqlite3 database and postgres database locally
 if ENVIRONMENT == 'production' and POSTGRES_LOCALLY == True:
