@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 
+from imagekit.models import ImageSpecField
+from pilkit.processors import ResizeToFill 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -31,9 +34,16 @@ class Flowers(models.Model):
     title = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
     image = models.ImageField(default='', blank=True, upload_to='images')
+    image_thumbnail = ImageSpecField(
+        source='image', 
+        processors=[ResizeToFill(350, 200)],
+        format='JPEG',
+        options={'quality': 80}
+        )
     slug = models.SlugField(blank=True, default='')
     category = models.ForeignKey(Category,null=True, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
+    
     
     class Meta:
         verbose_name_plural = "Flowers"

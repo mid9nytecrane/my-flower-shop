@@ -18,7 +18,7 @@
     <div class='lg:mx-auto hover:scale-105 lg:mt-8 transition-transform overflow-hidden duration-300 bg-gray-800 shadow-sm rounded-lg'>
 
         {% if flower.image %}
-            <img src="{{ flower.image.url  }}" alt="{{flower.title}}" class='rounded-t-lg h-64 w-full object-cover hover:scale-150  transition-transform duration-300'>
+            <img src="{{ flower.image_thumbnail.url  }}" alt="{{flower.title}}" class='rounded-t-lg h-64 w-full object-cover hover:scale-150  transition-transform duration-300'>
         {% endif %}
         <a href="#" class="block  p-6 bg-white border border-gray-200 rounded-t-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     
