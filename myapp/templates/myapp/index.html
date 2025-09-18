@@ -17,16 +17,24 @@
     
     <div class='lg:mx-auto hover:scale-105 lg:mt-8 transition-transform overflow-hidden duration-300 bg-gray-800 shadow-sm rounded-lg'>
 
+        {% if flower.image %}
+            <img src="{{ flower.image.url  }}" alt="{{flower.title}}" class='rounded-t-lg h-64 w-full object-cover hover:scale-150  transition-transform duration-300'>
+        {% endif %}
         <a href="#" class="block  p-6 bg-white border border-gray-200 rounded-t-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{flower.title}}</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400 line-clamp-3 hover:line-clamp-none">{{flower.description}}.</p>
         </a>
-        <div class='mt-4 p-4 flex justify-between text-sm lg:flex lg:justify-center lg:items-center gap-4'>
+        <div class='mt-4 p-4 flex flex-grow justify-between text-sm lg:flex lg:justify-center lg:items-center gap-4'>
             <a href="#" class='font-light underline text-white hover:text-blue-400'>{{flower.category}}</a>
             <a href="{% url 'detail-page' flower.slug|default:'no-slug'%}"class='py-2 px-6 rounded-md bg-gray-200 font-semibold hover:bg-gray-400 hover:text-white'>View</a>
+            {% if perms.myapp.change_flower %}
             <a href="{% url 'edit' flower.id%}"class='py-2 px-6 rounded-md bg-gray-200 font-semibold hover:bg-gray-400 hover:text-white'>Edit</a>
+            {% endif %}
+
+            {% if perms.myapp.delete_flower %}
             <a href="{% url 'delete' flower.pk%}"class='py-2 px-6 rounded-md bg-gray-200 font-semibold hover:bg-gray-400 hover:text-white'>Delete</a>
+            {% endif %}
 
         </div>
         <hr class='border border-gray-300'>

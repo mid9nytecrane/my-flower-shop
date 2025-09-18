@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import Http404
+from django.contrib.auth.decorators import permission_required
 # Create your views here.
 from myapp.models import Flowers, Category,Tag
 from myapp.forms import MyForm
@@ -25,7 +26,7 @@ def tags(request, slug=None):
     }
     return render(request,'myapp/index.html', context)
 
-
+@permission_required('myapp.add_flower')
 def detail_page(request, slug=None):
    
     # if slug is not None:
@@ -55,6 +56,7 @@ def detail_page(request, slug=None):
 
 
 # edit page function
+
 def create_page(request):
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -67,6 +69,7 @@ def create_page(request):
     return render(request, 'maypp/edit.html', {'form': form})
 
 
+@permission_required('myapp.change_flower')
 def edit_page(request, pk=None):
     flower = get_object_or_404(Flowers, pk=pk)
 
@@ -88,6 +91,7 @@ def edit_page(request, pk=None):
     })
 
 
+@permission_required('myapp.change_delete')
 def delete_flower(request, pk=None):
     flower = get_object_or_404(Flowers, pk=pk)
     flower.delete()

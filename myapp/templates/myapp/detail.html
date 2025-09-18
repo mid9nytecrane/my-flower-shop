@@ -1,12 +1,20 @@
 
 {% extends "base/base.html" %}
 
-{% block content %}
+{% block content %} 
+<div class='grid grid-cols-2 mt-4'>
+    <div>
 
-<div class='bg-gray-200 rounded-lg mt-4 p-6'>
-    <h1 class='text-3xl font-semibold text-center'>{{flower.title}}</h1>
-    <p class='font-normal text-wrap mt-2'>{{flower.description}}</p>
-
+        {% if flower.image %}
+            <img src="{{ flower.image.url}}" alt="{{ flower.title }}" class='rounded-l-lg'>
+        {% endif %}
+    </div>
+    
+    <div class='bg-gray-200 rounded-r-lg  p-6'>
+        <h1 class='text-3xl font-semibold text-center'>{{flower.title}}</h1>
+        <p class='font-normal text-wrap mt-2'>{{flower.description}}</p>
+    
+    </div>
 </div>
 <div class='flex justify-center mt-2'>
 

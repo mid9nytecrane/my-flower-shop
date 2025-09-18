@@ -30,6 +30,7 @@ class Tag(models.Model):
 class Flowers(models.Model):
     title = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
+    image = models.ImageField(default='', blank=True, upload_to='images')
     slug = models.SlugField(blank=True, default='')
     category = models.ForeignKey(Category,null=True, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
