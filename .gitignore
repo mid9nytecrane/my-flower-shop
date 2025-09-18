@@ -1,0 +1,5 @@
+node/
+myapp/
+media/
+__pycache__/
+.env

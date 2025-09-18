@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from environ import Env 
+env = Env()
+Env.read_env()
+
+ENVIRONMENT = env("ENVIRONMENT", default='production')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!=^q8b6-4fa0$ma6rs2qr&)x=+iabcnukwgc5oz^a^h3q1xe1-'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False 
 
 ALLOWED_HOSTS = []
 
@@ -47,6 +55,7 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'imagekit',
+    'admin_honeypot',
     
 ]
 
@@ -153,6 +162,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static/'),
+)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media/'
 
@@ -160,3 +172,5 @@ MEDIA_ROOT = 'media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_USERNAME_BLACKLIST = ['admin']
