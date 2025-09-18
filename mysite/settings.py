@@ -35,7 +35,7 @@ if ENVIRONMENT == 'production':
 else:
     DEBUG = False 
 
-ALLOWED_HOSTS = ['https://my-flower-shop-ngwj.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
