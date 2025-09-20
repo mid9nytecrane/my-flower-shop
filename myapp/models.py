@@ -38,7 +38,7 @@ class Flowers(models.Model):
         source='image', 
         processors=[ResizeToFill(350, 200)],
         format='JPEG',
-        options={'quality': 80}
+        options={'quality': 85}
         )
     slug = models.SlugField(blank=True, default='')
     category = models.ForeignKey(Category,null=True, on_delete=models.PROTECT)
