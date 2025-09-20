@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ENVIRONMENT == 'production':
+if ENVIRONMENT == 'development':
     DEBUG = True
 else:
     DEBUG = False 
@@ -192,7 +192,6 @@ CLOUDINARY_STORAGE = {
     'API_KEY': env('CLOUD_API_KEY'),
     'API_SECRET': env('CLOUD_API_SECRET')
 }
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
